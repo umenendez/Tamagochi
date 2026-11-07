@@ -7,13 +7,27 @@ public class Tamagochi implements Runnable {
     private AtomicInteger tiempoVida;
     private byte id;
     private String nombre;
+    private volatile boolean vivo = true;
+    
     int TIEMPO_DE_VIDA_EN_SEGUNDOS = 300;
+    
     public Tamagochi(String nombre, int i) {
         this.nombre = nombre;
         this.id = (byte) i;
         this.tiempoVida = new AtomicInteger(0);
     }
+    public boolean estaVivo() {
+        return vivo;
+    }
 
+    public void asesinar() {
+
+        vivo = false;
+
+        System.out.println(
+            nombre + " ha sido asesinado."
+        );
+    }
     public AtomicInteger getTiempoVida() {
         return tiempoVida;
     }

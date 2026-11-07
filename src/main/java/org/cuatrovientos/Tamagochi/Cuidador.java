@@ -10,7 +10,8 @@ public class Cuidador {
     private List<Tamagochi> tamagochis;
     private Scanner scanner;
     private int siguienteId;
-
+    
+    
     public Cuidador() {
         this.tamagochis = new ArrayList<>();
         this.scanner = new Scanner(System.in);
@@ -163,7 +164,6 @@ public class Cuidador {
         }
     }
 
-    // Limpiar
     private void limpiar() {
 
         Tamagochi t = buscarTamagochi();
@@ -173,7 +173,6 @@ public class Cuidador {
         }
     }
 
-    // Asesinar
     private void asesinar() {
 
         Tamagochi t = buscarTamagochi();
@@ -183,7 +182,6 @@ public class Cuidador {
         }
     }
 
-    // Leer números controlando los errores
     private int leerEntero(String mensaje, int minimo) {
 
         int numero;
@@ -212,7 +210,6 @@ public class Cuidador {
         }
     }
 
-    // Leer números dentro de un intervalo
     private int leerEntero(String mensaje, int minimo, int maximo) {
 
         int numero;
