@@ -125,7 +125,8 @@ public class Cuidador {
             System.out.println(
                 "ID: " + t.getId()
                 + " | Nombre: " + t.getNombre()
-                + " | Tiempo de vida: " + t.getTiempoVida().get()
+                + " | Tiempo de vida: " + t.getTiempoVida()
+                + " | Suciedad: " + t.getSuciedad() + "/10"
             );
         }
     }

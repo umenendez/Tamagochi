@@ -11,6 +11,7 @@ public class Tamagochi implements Runnable {
     private byte id;
     private String nombre;
     private volatile boolean vivo = true;
+    private int suciedad = 0;
     
     int TIEMPO_DE_VIDA_EN_SEGUNDOS = 300;
     
@@ -39,7 +40,13 @@ public class Tamagochi implements Runnable {
         this.tiempoVida = tiempoVida;
     }
 
-    public byte getId() {
+    public int getSuciedad() {
+		return suciedad;
+	}
+	public void setSuciedad(int suciedad) {
+		this.suciedad = suciedad;
+	}
+	public byte getId() {
         return id;
     }
 
@@ -91,12 +98,48 @@ public class Tamagochi implements Runnable {
     }
 
     public void limpiar() {
+        System.out.println(nombre + " se está bañando...");
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            return;
+        }
+
+        suciedad = 0;
         System.out.println(nombre + " está limpio.");
+    }
+    
+    public void controlarSuciedad() {
+
+        while (vivo) {
+            try {
+                Thread.sleep(20000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                return;
+            }
+
+            suciedad++;
+
+            if (suciedad == 5) {
+                System.out.println(nombre + " está empezando a estar muy sucio.");
+            }
+            if (suciedad == 9) {
+                System.out.println(nombre + " está a punto de morir, ¡¡APRESURATE Y LIMPIALO!!.");
+            }
+            if (suciedad == 10) {
+                System.out.println(nombre + " ha muerto por suciedad. ¡Menudo cochino estás hecho! limpialo... pobrecillo...");
+                vivo = false;
+            }
+        }
     }
 
     @Override
     public void run() {
-
+    	Thread hiloSuciedad = new Thread(() -> controlarSuciedad());
+    	hiloSuciedad.start();
         while (tiempoVida.get() < TIEMPO_DE_VIDA_EN_SEGUNDOS) {
 
             try {
