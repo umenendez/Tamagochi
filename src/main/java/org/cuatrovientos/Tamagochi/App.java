@@ -7,7 +7,7 @@ public class App {
     	Scanner scanner = new Scanner(System.in);
     	int opcion;
     	
-    	
+    	Tamagochi tamago = new Tamagochi("Pedro", (byte) 1);
 
     	do {
     	    System.out.println("|-- MENÚ TAMAGOCHI --|");
