@@ -1,5 +1,7 @@
 package org.cuatrovientos.Tamagochi;
 
+import java.util.Random;
+import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -66,7 +68,26 @@ public class Tamagochi implements Runnable {
     }
 
     public void jugar() {
+        Scanner sc = new Scanner(System.in);
+        Random random = new Random();
+
         System.out.println(nombre + " está jugando.");
+
+        int num1 = random.nextInt(9) + 1;
+        int num2 = random.nextInt(9 - num1 + 1);
+
+        int resultado = num1 + num2;
+
+        System.out.println("¿Cuánto es " + num1 + " + " + num2 + "?");
+        int respuesta = sc.nextInt();
+
+        while (respuesta != resultado) {
+            System.out.println("¡Respuesta incorrecta! Sigue jugando.");
+            System.out.println("¿Cuánto es " + num1 + " + " + num2 + "?");
+            respuesta = sc.nextInt();
+        }
+
+        System.out.println("¡Correcto! " + nombre + " ha terminado de jugar.");
     }
 
     public void limpiar() {

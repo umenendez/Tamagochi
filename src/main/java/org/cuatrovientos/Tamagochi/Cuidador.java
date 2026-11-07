@@ -159,7 +159,6 @@ public class Cuidador {
     private void jugar() {
 
         Tamagochi t = buscarTamagochi();
-
         if (t != null && t.estaVivo()) {
             t.jugar();
         }
