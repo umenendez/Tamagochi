@@ -149,9 +149,10 @@ public class Cuidador {
     private void darDeComer() {
 
         Tamagochi t = buscarTamagochi();
-
+        System.out.println("¿Qué quieres que coma?:");
+        String comida = scanner.nextLine();
         if (t != null && t.estaVivo()) {
-            t.comer();
+            t.comer(comida);
         }
     }
 

@@ -1,5 +1,6 @@
 package org.cuatrovientos.Tamagochi;
 
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Tamagochi implements Runnable {
@@ -52,8 +53,16 @@ public class Tamagochi implements Runnable {
         this.nombre = nombre;
     }
 
-    public void comer() {
-        System.out.println(nombre + " está comiendo.");
+    public void comer(String comida) {
+        System.out.println(nombre + " está comiendo " + comida +"....");
+        
+            int tiempo = ThreadLocalRandom.current().nextInt(100, 10001);
+            try {
+				Thread.sleep(tiempo);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+            System.out.println(nombre + " se ha zampado " + comida);
     }
 
     public void jugar() {
